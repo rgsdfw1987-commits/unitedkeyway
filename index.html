@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>United Keyway LLC | Mobile Automotive Locksmith in Texas</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -13,45 +16,120 @@
       color: #1f2937;
       line-height: 1.6;
     }
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes floatSlow {
+      0%, 100% {
+        transform: translateY(0px) scale(1);
+      }
+      50% {
+        transform: translateY(-6px) scale(1.012);
+      }
+    }
     header {
-      background: #0f172a;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       color: #ffffff;
-      padding: 40px 20px;
+      padding: 45px 20px;
       text-align: center;
+      animation: fadeUp 0.6s ease-out both;
     }
     header h1 {
       margin: 0 0 10px;
-      font-size: 2rem;
+      font-size: 2.1rem;
+    }
+    header p {
+      margin: 0 auto 22px;
+      max-width: 650px;
+      color: #e2e8f0;
+    }
+    .motion-img {
+      width: 100%;
+      max-width: 780px;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28);
+      animation: floatSlow 5s ease-in-out infinite;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      will-change: transform;
+    }
+    .motion-img:hover {
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.36);
     }
     .container {
       max-width: 850px;
       margin: 30px auto;
+      padding: 0 16px;
+    }
+    .card {
       background: #ffffff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+      padding: 28px;
+      margin-bottom: 22px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+      animation: fadeUp 0.7s ease-out both;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.1);
     }
     h2 {
       color: #0f172a;
       border-bottom: 2px solid #e5e7eb;
       padding-bottom: 8px;
+      margin-top: 0;
+    }
+    .section-img {
+      width: 100%;
+      max-height: 240px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin: 12px 0 16px;
+      animation: floatSlow 6.5s ease-in-out infinite;
+      transition: transform 0.25s ease;
+      will-change: transform;
     }
     ul {
       padding-left: 20px;
     }
+    li {
+      margin-bottom: 8px;
+    }
+    .animated-phone {
+      font-weight: bold;
+      color: #1d4ed8;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.4px;
+    }
     .cta {
       display: inline-block;
-      margin-top: 15px;
-      padding: 12px 22px;
+      margin-top: 12px;
+      padding: 12px 24px;
       background: #2563eb;
       color: #ffffff;
       text-decoration: none;
-      border-radius: 6px;
+      border-radius: 8px;
       font-weight: bold;
+      transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+    }
+    .cta:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
     }
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 22px 16px;
       font-size: 0.9rem;
       color: #4b5563;
     }
@@ -61,32 +139,106 @@
   <header>
     <h1>United Keyway LLC</h1>
     <p>Licensed Mobile Automotive Locksmith &amp; Key Programming Services in Texas</p>
+    <img class="motion-img" src="images/hero.jpg" alt="United Keyway Mobile Automotive Locksmith" />
   </header>
 
   <div class="container">
-    <h2>Services</h2>
-    <ul>
-      <li>Automotive key cutting and transponder/smart key programming</li>
-      <li>Ignition switch &amp; door lock repair and replacement</li>
-      <li>Module programming, cloning, and immobilization diagnostics</li>
-      <li>Mobile service across Dallas–Fort Worth &amp; surrounding Texas areas</li>
-    </ul>
+    <div class="card">
+      <h2>Services</h2>
+      <img class="section-img" src="images/services.jpg" alt="Automotive Keys and Programming" />
+      <ul>
+        <li>Automotive key cutting and transponder/smart key programming</li>
+        <li>Ignition switch &amp; door lock repair and replacement</li>
+        <li>Module programming, cloning, and immobilization diagnostics</li>
+        <li>Mobile service across Dallas–Fort Worth &amp; surrounding Texas areas</li>
+      </ul>
+    </div>
 
-    <h2>Contact &amp; Dispatch</h2>
-    <p><strong>Phone:</strong> (945) 308-8487</p>
-    <p><strong>Email:</strong> info@unitedkeyway.com</p>
-    <p><strong>Service Area:</strong> Dallas–Fort Worth (DFW), TX</p>
-    <a class="cta" href="tel:9453088487">Call Now for Service</a>
+    <div class="card" id="contact-card">
+      <h2>Contact &amp; Dispatch</h2>
+      <p>
+        <strong>Phone:</strong>
+        <span id="phone-counter" class="animated-phone" data-target="9453088487">(000) 000-0000</span>
+      </p>
+      <p><strong>Email:</strong> info@unitedkeyway.com</p>
+      <p><strong>Service Area:</strong> Dallas–Fort Worth (DFW), TX</p>
+      <a class="cta" href="tel:9453088487">Call Now for Service</a>
+    </div>
 
-    <h2>Licensing &amp; Compliance</h2>
-    <p>
-      Regulated by the Texas Department of Public Safety (DPS) – Security Contractor Company
-      with Locksmith Endorsement. License #: <strong>B31066501</strong>
-    </p>
+    <div class="card">
+      <h2>Licensing &amp; Compliance</h2>
+      <p>
+        Regulated by the Texas Department of Public Safety (DPS) – Security Contractor Company
+        with Locksmith Endorsement. License #: <strong>B31066501</strong>
+      </p>
+    </div>
   </div>
 
   <footer>
     &copy; 2026 United Keyway LLC. All rights reserved.
   </footer>
+
+  <script>
+    function formatUSPhone(digits) {
+      const clean = String(Math.max(0, Math.min(9999999999, Math.floor(digits)))).padStart(10, "0");
+      return (${clean.slice(0, 3)}) ${clean.slice(3, 6)}-${clean.slice(6, 10)};
+    }
+
+    function animatePhoneNumber() {
+      const el = document.getElementById("phone-counter");
+      if (!el || el.dataset.animated === "true") return;
+      el.dataset.animated = "true";
+
+      const target = Number(el.dataset.target || "9453088487");
+      const duration = 1200;
+      const startTime = performance.now();
+
+      function tick(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(target * eased);
+        el.textContent = formatUSPhone(current);
+
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          el.textContent = formatUSPhone(target);
+        }
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    const contactCard = document.getElementById("contact-card");
+    if ("IntersectionObserver" in window && contactCard) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animatePhoneNumber();
+              observer.disconnect();
+            }
+          });
+        },
+        { threshold: 0.25 }
+      );
+      observer.observe(contactCard);
+    } else {
+      animatePhoneNumber();
+    }
+
+    document.querySelectorAll(".motion-img, .section-img").forEach((img) => {
+      img.addEventListener("mousemove", (e) => {
+        const rect = img.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        img.style.transform = translate3d(${(x * 10).toFixed(1)}px, ${(y * 10).toFixed(1)}px, 0) scale(1.03);
+      });
+
+      img.addEventListener("mouseleave", () => {
+        img.style.transform = "";
+      });
+    });
+  </script>
 </body>
 </html>
